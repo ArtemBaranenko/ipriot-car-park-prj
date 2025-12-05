@@ -5,7 +5,7 @@ class CarPark:
     def __init__(self, location, capacity, sensors = None, plates = None, displays = None):
         self.location = location or "Unknown"
         self.capacity = capacity or 0
-        self.plates = plates 
+        self.plates = plates or []
         self.displays = displays or []
         self.sensors = sensors or []
 
