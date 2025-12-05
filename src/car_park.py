@@ -1,3 +1,5 @@
+import json
+
 from pathlib import Path
 from datetime import datetime
 
@@ -34,7 +36,19 @@ class CarPark:
         elif isinstance(component, Display):
             self.displays.append(component)
 
-    
+    def write_config(self):
+        with open("config.json", "w") as f: # TODO: use self.config_file; use Path; add optional parm to __init__
+            json.dump({"location": self.location,
+                        "capacity": self.capacity,
+                        "log_file": str(self.log_file)}, f)
+            
+    @classmethod
+    def from_config(cls, config_file=Path("config.json")):
+        config_file = config_file if isinstance(config_file, Path) else Path(config_file)
+        with config_file.open() as f:
+            config = json.load(f)
+        return cls(config["location"], config["capacity"], log_file=config["log_file"])
+
     def add_car(self, plate):
         self.plates.append(plate)
         self.update_display()
