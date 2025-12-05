@@ -28,6 +28,5 @@ def main():
     for _ in range(2):
         exit_sensor.detect_vehicle()
 
-
 if __name__ == "__main__":
     main()

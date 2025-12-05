@@ -11,10 +11,7 @@ class Display:
     def __repr__(self):
         return self.__str__()
 
-    # def display(self):
-    #     pass
-
     def update(self, data):
-        self.message = ""
         for key, value in data.items():
-            self.message += f"{key}: {value}\n"
+            print(f"{key}: {value}")
+        data = []
