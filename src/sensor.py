@@ -1,12 +1,27 @@
-from car_park import CarPark
-
 class Sensor:
-    def __init__(self):
-        self.car_park = CarPark()
 
-    def enter(self):
-        self.car_park.carIn()
+    def __init__(self, id, is_active, car_park):
+        self.id = id
+        self.is_active = is_active or False
+        self.car_park = car_park
 
-    def exit(self):
-        self.car_park.carOut()
+    def __str__(self):
+        return f"Sensor {self.id} is {'Active' if self.is_active else 'Not active'}"
+
+    def __repr__(self):
+        return self.__str__()
+    
+    def detect_vehicle(self):
+        pass
+
+    def scan_plate(self):
+        pass
+    
+
+    class EntrySensor(Sensor):
+        pass
+        
+    class ExitSensor(Sensor):
+        pass
+
 
