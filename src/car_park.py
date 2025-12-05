@@ -41,7 +41,6 @@ class CarPark:
         data = {"available_bays": self.available_bays, "temperature": 25}
         for display in self.displays: display.update(data)
 
-        
 
 if __name__ == "__main__":
 
