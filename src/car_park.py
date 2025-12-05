@@ -3,11 +3,11 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-from .display import Display
-from .sensor import Sensor
+from display import Display
+from sensor import Sensor
 
 class CarPark:
-    def __init__(self, location, capacity, sensors = None, plates = None, displays = None, log_file=Path("log.txt") ):
+    def __init__(self, location, capacity, sensors = None, plates = None, displays = None, log_file=Path("log.txt"), config_file=Path("config.json")):
         self.location = location or "Unknown"
         self.capacity = capacity or 0
         self.plates = plates or []
@@ -16,6 +16,8 @@ class CarPark:
         
         self.log_file = log_file if isinstance(log_file, Path) else Path(log_file)
         self.log_file.touch(exist_ok=True)
+
+        self.config_file = config_file if isinstance(config_file, Path) else Path(config_file)
 
     def __str__(self):
         return f"Car park at {self.location}, with {self.capacity} bays."
@@ -37,7 +39,7 @@ class CarPark:
             self.displays.append(component)
 
     def write_config(self):
-        with open("config.json", "w") as f: # TODO: use self.config_file; use Path; add optional parm to __init__
+        with self.config_file.open("w") as f: 
             json.dump({"location": self.location,
                         "capacity": self.capacity,
                         "log_file": str(self.log_file)}, f)
