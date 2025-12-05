@@ -2,17 +2,12 @@ from car_park import CarPark
 from sensor import Sensor
 from display import Display
 
-carPark = CarPark("Location", 1)
+car_park = CarPark("123 Example Street", 100)
+display = Display(1, "Welcome to the car park", True)
 
-sensor = Sensor(1, True)
+display.update({"message": "Goodbye"})
 
-sensor.enter()
-sensor.exit()
+print (display.message)
 
-display = Display(1, "Display", True)
-
-display.showAmbientTemperature()
-display.showWeather()
-display.showArbitraryAnnouncements()
 
 # добавь уточняющий вопросс при попытке закрыть программу, в момент если действие подтвержденно, перепиши все номера в файл

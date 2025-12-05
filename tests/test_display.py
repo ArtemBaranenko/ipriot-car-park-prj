@@ -1,6 +1,6 @@
 import unittest
-from display import Display
-from car_park import CarPark
+from src.display import Display
+from src.car_park import CarPark
 
 class TestDisplay(unittest.TestCase):
     def setUp(self):
@@ -14,8 +14,7 @@ class TestDisplay(unittest.TestCase):
         self.assertEqual(self.display.is_on, True)
 
     def test_update(self):
-
         self.display.update({"message": "Goodbye"})
-        self.assertEqual(self.display.message, "Goodbye")
+        self.assertIn("Goodbye", self.display.message)
 
     

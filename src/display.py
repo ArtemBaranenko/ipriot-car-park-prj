@@ -15,5 +15,6 @@ class Display:
     #     pass
 
     def update(self, data):
-        for value in data.values():
-            self.message = value
+        self.message = ""
+        for key, value in data.items():
+            self.message += f"{key}: {value}\n"
